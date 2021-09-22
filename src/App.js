@@ -3,13 +3,13 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Alert from './components/Alert';
 import TextForm from './components/TextForm';
-// import About from './components/About';
+import About from './components/About';
 import React, { useState } from 'react'
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 
 function App() {
@@ -29,35 +29,35 @@ function App() {
   const toggleMode = () => {
     if (mode === 'light') {
       setMode('dark');
-      document.body.style.backgroundColor = 'grey';
+      document.body.style.backgroundColor = '#151831';
       showAlert("Dark mode has been enabled", "success");
-      document.title = "MyApp - Dark Mode"
+      // document.title = "MyApp - Dark Mode"
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
-      showAlert("lightk mode has been enabled", "success");
+      showAlert("light mode has been enabled", "success");
     }
   }
 
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
       <Navbar title="MyApp" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
       <div className="container my-3">
-        {/* <Switch> */}
-          {/* <Route exact path="/about">
-            <About />
-          </Route> */}
-          {/* <Route exact path="/"> */}
-          <TextForm showAlert={showAlert} heading="Enter your Text to analyse below" mode={mode} />
-          {/* </Route>
-        </Switch> */}
+        <Switch>
+          <Route exact path="/about">
+            <About  mode={mode}/>
+          </Route>
+          <Route exact path="/">
+          <TextForm showAlert={showAlert} heading="Try MyApp Word counter, character counter, Remove extra spaces" mode={mode} />
+          </Route>
+        </Switch> 
         
       </div>
-      {/* </Router> */}
+      </Router>
     </>
 
   );
